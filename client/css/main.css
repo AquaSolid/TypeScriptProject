@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    /*padding: 0;*/
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/*Colors*/
+:root {
+    --black-color: #222;
+    --bg-color: #f6faff;
+    --highlight-color: #6ca8e6;
+    --base-highlight-color: #3a83c6;
+}
+
+/*Buttons*/
+.btn-sleek {
+    border: solid;
+    border-width: 3px;
+    border-color: var(--highlight-color);
+    background-color: var(--black-color);
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.btn-sleek:hover {
+    color: white;
+    font-weight: bold;
+    border-width: 3px;
+    border-color: var(--base-highlight-color);
+    background-color: var(--base-highlight-color);
+    border: solid;
+    box-shadow: none;
+}
+
+.btn-sleek:focus {
+    border: solid;
+    border-width: 3px;
+    border-color: var(--highlight-color);
+    background-color: var(--black-color);
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+/*Jumbotron*/
+.jumbotron {
+    background-size: cover;
+    min-height: 376px;
+    margin-bottom: 0;
+}
+
+.jumbotron-lake {
+    background-image: url("../img/lake.jpg");
+}
+
+.jumbotron-waterfall {
+    background-image: url("../img/waterfall.jpg");
+}
+
+.jumbotron-forest {
+    background-image: url("../img/forest.jpg");
+}
+
+.jumbotron-road {
+    background-image: url("../img/road.jpg");
+}
+
+.jumbotron-sunshine {
+    background-image: url("../img/sunshine.jpg");
+}
+
+.jumbotron-typewriter {
+    background-image: url("../img/typewriter.jpg");
+}
+/*One Liners*/
+
+.blockCenter {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.textBold {
+    color: white;
+    font-weight: bold;
+}
+
+.textShadow {
+    text-shadow: 3px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.fontBigger{
+    font-size: larger;
+}
+
+.image-border {
+    border-style: solid;
+    border-color: var(--highlight-color);
+    border-width: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.textHighlight {
+    color: var(--highlight-color);
+}
+
+.toUpper {
+    text-transform: uppercase;
+}
+
+.highLightBackground {
+    background-color: var(--highlight-color);
+}
+
+.width100 {
+    width: 100%;
+}
+
+.textBox {
+    border-left: 3px solid var(--highlight-color);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.codeBox {
+    border: 3px solid var(--base-highlight-color) !important;
+    border-radius: 4px;
+}
+
+.homeBox {
+    background-color: var(--black-color);
+}
+
+.marginTop {
+    margin-top: 15px;
+}
+
+/*Footer Adjustments*/
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -142px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.Footer,
+.page-wrap:after {
+    height: 142px;
+}
+
+.topFooter {
+    background-color: var(--highlight-color);
+}
+
+.bottomFooter {
+    background-color: var(--base-highlight-color);
+    height: 750px;
+}
+
+.floatRight {
+    float: right;
+}
+
+.footerBox {
+    display: inline-block;
+    width: 48%;
+}
+
+/* Overwriting with type selection */
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: var(--highlight-color);
+}
+
+p {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 125%;
+    text-align: justify;
+}
+
+ol > a {
+    color: white !important;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 125%;
+}
+ol > a:active,
+ol > a:visited {
+    color: lightgray !important;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-size: 125%;
+}
+
+/* Overwriting Bootstrap's CSS */
+
+.navbar {
+    margin: 0;
+    border-radius: 0;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand {
+    color: var(--highlight-color);
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+    background: var(--highlight-color);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: var(--highlight-color);
+}

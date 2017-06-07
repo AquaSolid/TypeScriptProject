@@ -1,0 +1,95 @@
+<div ng-controller="MainController as main">
+    <prism></prism>
+    <div class="container">
+        <h1 id="InstallationProcess">Installation Process</h1>
+        <p>There are two main ways to get the TypeScript tools:</p>
+        <ol>
+            <li>Via npm (the Node.js package manager)</li>
+            <li>By installing TypeScript's Visual Studio plugins</li>
+        </ol>
+        <p>
+            For option 1, you will need to have NodeJS installed and alongside it npm, a package manager. You can easily
+            install them both by following this link, where we recommend that you choose to install the LTS version,
+            recommended for most users. After NodeJS is installed you can verify your installation by typing
+            <code> node -v</code> or <code> node --version</code> for which you will get something like
+            <code>v6.10.0</code> as output. You can also run <code>npm -v</code> or <code>npm --version</code> to verify
+            that the package manager has also been installed.
+            Assuming you have node and npm and you’ve chosen to take on the first installation option (using npm) simply
+            write this line in your command line:
+            <ol>
+        <p><code> npm install -g typescript</code></p></ol>
+        <p>Where the <code>-g</code> is the global flag meaning that it’ll install TypeScript on the whole machine, if
+            we didn’t have the <code>-g</code> global flag then npm will automatically assume that we want TypeScript
+            just in the current project that we’re working in, which is actually the folder we are in at that moment
+            inside the command line.</p>
+        </p>
+        <p>For option 2, Visual Studio 2017 and Visual Studio 2015 Update 3 include TypeScript by default. If you didn’t
+            install TypeScript with Visual Studio, you can still download it. In other IDEs such as WebStorm or PHPStorm
+            TypeScript comes built-in, so you can easily just incorporate TypeScript into your projects assuming your
+            project is suited for its use.
+        </p>
+        <h2 id="First">Making your first TypeScript file</h2>
+        <p>Assuming you’ve went through with the installation process, using the editor of your choice type in the
+            following JavaScript code in a file named <code>greeter.ts</code>, notice that the extensions is
+            <code>.ts</code> instead of <code>.js</code>.
+        </p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">function greeter(person) {
+    return "Hello, " + person;
+}
+
+var user = "Jane User";
+
+document.body.innerHTML = greeter(user);</code></pre>
+        <p>
+            At the command line, run the TypeScript compiler:
+            <code> tsc greeter.ts</code>
+            The result will be a file greeter.js which contains the same JavaScript that we fed in.
+        </p>
+        <h2 id="Notes">Additional notes on transpiling, joining files and watcher (<a
+                href="http://blog.teamtreehouse.com/getting-started-typescript">source</a>)</h2>
+        <p>The following command will compile a single <code>.ts</code> file into a <code>.js</code> file:
+        <ol><p><code>tsc app.ts</code></p></ol>
+        <p>This will result in an app.js file being created.</p>
+        <p>To compile multiple .ts files:</p>
+        <ol><p><code>tsc app.ts another.ts someMore.ts</code></p></ol>
+        <p>This will result in 3 files, <code>app.js</code>, <code>another.js</code> and <code>someMore.js</code>.</p>
+        <p>You can also use wildcards too. The following command will compile all TypeScript files in the current
+            folder.</p>
+        <ol><p><code>tsc *.ts</code></p></ol>
+        <p>All TypeScript files will compile to their corresponding JavaScript files.</p>
+        <p>You can also compile all your TypeScript files down to a single JavaScript file. This can reduce the number
+            of HTTP requests a browser has to make and improve performance on HTTP 1.x sites. To do this use the <code>--out</code>
+            option like so:</p>
+        <ol><p><code>tsc *.ts --out app.js</code></p></ol>
+        <p>Instead of running the tsc command all the time you can use the option <code>--watch</code>.</p>
+        <ol><p><code>tsc *.ts --out app.js --watch</code></p></ol>
+
+
+        <p>Every time there’s an update to a TypeScript file it’ll recompile the source files to JavaScript.</p>
+
+        <p>If you’re using a wildcard like this, any new files created since running the tsc command won’t get compiled,
+            you need to stop the watcher and start again.</p>
+
+
+        <p>Now we can start taking advantage of some of the new tools that TypeScript offers. Add a <code>:
+            string</code> type annotation to the ‘person’ function argument as shown here:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">function greeter(person: string) {
+    return "Hello, " + person;
+}
+
+var user = "Jane User";
+
+document.body.innerHTML = greeter(user);</code></pre>
+        <!--
+        <h1></h1>
+        <h2></h2>
+        <p></p>
+        <code></code>
+        <pre class="line-numbers codeBox"><code class="language-typescript"></code></pre>
+        -->
+
+    </div>
+</div>
+
+

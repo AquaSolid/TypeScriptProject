@@ -1,0 +1,136 @@
+<div ng-controller="MainController as main">
+    <prism></prism>
+    <div class="container">
+        <h1 id="BasicTypes">Basic Types in TypeScript</h1>
+        <p>Programming is all about data, and manipulating the simplest, most primitive forms of data is what makes the
+            program function. TypeScript has all the same datatypes as JavaScript but with an addition of a useful
+            enumeration type.</p>
+        <h2 id="Boolean">Boolean</h2>
+        <p>The <code>boolean</code> type is the most straightforward datatype and it’s can represent a simple <code>true</code> or <code>false</code> value.</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let boolean_var : boolean = true;</code></pre>
+
+        <h2 id="Number">Number</h2>
+        <p>All numbers in TypeScript are floating point numbers and their type in TypeScript is <code>number</code>. TypeScript supports decimal, hexadecimal, binary and octal literals.</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let decimal: number = 10;
+let hex: number = 0x00F0;
+let binary: number = 0b1010;
+let octal: number = 0o744;</code></pre>
+
+        <h2 id="String">String</h2>
+        <p>TypeScript, like in many other languages, handles textual data using the type <code>string</code>. TypeScript can use either double quotes (“”) or single quotes (‘’) to surround string data.</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let name: string = "John";
+let color: string = 'blue';</code></pre>
+
+        <p>You could also use backtick/backquote to surround what are called <b>template strings</b> which can span multiple lines and have embedded expressions, and these expressions have the form <code>${ expression }</code>.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">let age: number = 34;
+let name: string = "John Doe";
+let line: string = `Hello, I am ${ name } and I will be ${ age + 1 } years old next week`;</code></pre>
+
+        <h2 id="Array">Array</h2>
+        <p>TypeScript, like most languages, allows you to use arrays of multiple values. Arrays can be written in two ways, you can either write the type of the array followed by square brackets <code>[]</code> or you can use a generic array type, i.e. <code>Array&lt;type&gt;</code>.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">let list1 : number[] = [1,2,3];
+let list2: Array<number> = [1,2,3];</code></pre>
+
+        <h2 id="Tuple">Tuple</h2>
+        <p>Tuples are arrays with a fixed number of elements, however you can use different types in the same tuple.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">let tuple1: [string, number];
+tuple1 = ["typescript", 6]; //correct
+tuple1 = [6, "typescript"]; //incorrect</code></pre>
+        <p>When accessing an element with an index that is bigger than the index given when initializing the tuple, you create a union type.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">tuple1[3] = "javascript"; //correct, since the type is either string or number.
+tuple1[4] = false; //incorrect, since the type is not number or string.</code></pre>
+
+        <p>Union types are an advanced types and will be covered later on.</p>
+
+        <h2 id="Enum">Enum</h2>
+        <p>Enum is a type in TypeScript that is not found in JavaScript, and is an array of numeric values which have specific names.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">enum Color {Red, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+        <p>By default, enums will number their elements starting with 0. You can change this by manually changing the value of one of the members. We can change the starting value to 1 by doing this:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">enum Color {Red = 1, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+
+        <p>You can even set all the values to a specific number:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">enum Color {Red = 1, Green = 2, Blue = 4}
+let c: Color = Color.Green;</code></pre>
+        <h2 id="Any">Any</h2>
+        <p>The any type is a self-explanatory type, as in it can hold any other type in itself. What this means is that we do not check the type of the data, rather we let the compile-time check handle it.</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false; // okay</code></pre>
+
+        <p>With <code>any</code>, you can have an array which contains many variables of different data types, like so:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let list: any[] = [1, true, "free"];</code></pre>
+
+        <p>Contrary to the expected, <code>Object</code> does not play a similar role to <code>any</code>, rather it only allows you to assign any value to them - you can’t call arbitrary methods on them, even ones that actually exist:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let notSure: any = 4;
+notSure.ifItExists(); // okay, ifItExists might exist at runtime
+notSure.toFixed(); // okay, toFixed exists (but the compiler doesn't check)
+
+let prettySure: Object = 4;
+prettySure.toFixed(); // Error: Property 'toFixed' doesn't exist on type 'Object'.</code></pre>
+        <h2 id="Void">Void</h2>
+        <p><code>void</code> is the opposite of <code>any</code>, as in it denotes an absence of any type, this is often used to signal that a function doesn’t return a value:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">function warnUser(): void {
+    alert("This is my warning message");
+}</code></pre>
+
+        <p>You can declare variables of type <code>void</code>, but it is not very practical since you can only assign <code>undefined</code> or <code>null</code> to them:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let unusable: void = undefined;</code></pre>
+
+        <h2 id="NullAndUndefined">Null and Undefined</h2>
+
+        <p><code>null</code> and <code>undefined</code> actually are both separate types in TypeScript, however, much like <code>void</code>, they’re not very useful; on their own, as you cannot assign anything else to a variable once it has been assigned an <code>undefined</code> or <code>null</code> type:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let u: undefined = undefined;
+let n: null = null;</code></pre>
+
+        <p>You can add <code>undefined</code> or <code>undefined</code> to any other type e.g. <code>number</code>, which means that <code>null</code> and <code>undefined</code> are subtypes of all types. There is an exception however, and that is when you use the <code>--strictNullChecks</code> flag where <code>null</code> and <code>undefined</code> are only assignable to void types. This is very helpful in debugging, as you can avoid many common errors. But, if you want to pass either a <code>string</code>, <code>null</code>, or <code>undefined</code>, you can use a <code>string | null | undefined</code> union type.</p>
+
+        <h2 id="Never">Never</h2>
+        <p><code>never</code> is a type that denotes values that never occur. For example a <code>never</code> return type can be assigned to a function that always throws an exception or a function that never returns. Variables also acquire the type <code>never</code> when narrowed by any type guards that can never be true. <code>never</code> is assignable to every type, however no type is assignable to <code>never</code>:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">// Function returning never must have unreachable end point
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// Inferred return type is never
+function fail() {
+    return error("Something failed");
+}
+
+// Function returning never must have unreachable end point
+function infiniteLoop(): never {
+    while (true) {
+    }
+}</code></pre>
+
+        <h2 id="TypeAssertions">Type Assertions</h2>
+        <p>A type assertion allows you to bypass TypeScript’s checking of data types. This is used when you want to do a specific task, and you know that you won’t run into any problems, but would otherwise not be allowed to do it by the compiler. Type assertions act similarly to type casts in other languages, however, as stated before, the compiler assumes that you have done all the necessary checks and does not do any checks or data restructuring of its own. You can type assert in two ways, firstly, using angle brackets:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let someValue: any = "this is a string";
+
+let strLength: number = (&lt;string&gt;someValue).length;</code></pre>
+
+        <p>Secondly, using the keyword as:</p>
+
+        <pre class="line-numbers codeBox"><code class="language-typescript">let someValue: any = "this is a string";
+
+let strLength: number = (someValue as string).length;</code></pre>
+
+        <p>The above examples both accomplish the exact same thing, and using one over the other is merely an act of preference, however when using TypeScript with JSX, only as type assertions are allowed.</p>
+
+
+    </div>
+</div>

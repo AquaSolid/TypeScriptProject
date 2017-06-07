@@ -1,0 +1,228 @@
+<div ng-controller="MainController as main">
+    <prism></prism>
+    <div class="container">
+
+        <h1 id="OOP">Object-oriented Programming in TypeScript (<a href="https://www.typescriptlang.org/docs/handbook/classes.html">source</a>)</h1>
+        <p>Object-Oriented Programming(OOP) is a type of programing paradigm which focuses more on problem solving, rather than coding itself. OOP is generally used with classes and object which are meant to represent real-life problems. It stores data in the form of attributes, while it codes in the form of procedures, and these procedures often interact with other objects and access and modify the data within those objects. One big advantage of OOP is encapsulation. Encapsulation is a concept that inds data together with the functions that manipulate said data and keep them safe from outside interference and misuse. In Typescript, this is simply done by using the keywords <code>public</code>, <code>private</code> and <code>protected</code> before the name of the variable,for example:</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">private name: type</code></pre>
+        <p>TypeScript allows for a much simple Object-oriented style of programming as opposed to JavaScript because it doesn’t use the strange syntax of prototyping in JavaScript. In TypeScript defining classes is immediately familiar and straightforward as you can see from the following code example:</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">class A{
+    private x: number;
+    private y: string;
+    private z: any;
+    constructor(x: number, y: string, z: any){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    function foo(){
+            alert(x + y + z);
+    }
+}
+</code></pre>
+        <p>While in contrast, the same code, but in JavaScript, would be translated as:</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">var A = (function () {
+    function A(x, y, z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    return A;
+}());
+
+function foo() {
+    alert(x + y + z);
+}</code></pre>
+        <p>As we can see, JavaScript creates classes using various functions, and does so in a fairly roundabout way because of its functional nature and the fact that JavaScript was never meant to be an Object-Oriented programing language.
+        </p>
+        <p>Creating members of a certain class in TypeScript is pretty simple, we need only to specify whether it’s private, protected or public, then typing the name of the member, and finally, specify the type of the member preceded by colons. For example:</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">class class_name{
+    private name: string;
+    protected name2: number;
+    public name3: any;
+    …
+}
+</code></pre>
+        <p>In TypeScript, as shown in the example above, classes are made by using the keyword <code>class</code> followed by the name of said class e.g. <code>class A{}</code>. Then, the class must have a constructor which is used every time an object of the class is instantiated in order to construct said object. The syntax for creating a constructor is the following: </p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">constructor(arg1: type, arg2: type, arg3: type...){
+    this.member1 = arg1;
+    this.member2 = arg2;
+    this.member3 = arg3;
+    ...
+}
+</code></pre>
+        <p>You may notice the conspicuous absence of any destructor in the first example of classes in Typescript, that is because it doesn’t have destructors, because any object that is no longer referenced will be deleted by the garbage collector that JavaScript uses.</p>
+        <p>Another important concept of OOP is inheritance and polymorphism, and TypeScript handles in it’s typical succinct style. Consider the following example:</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">constructor(arg1: type, arg2: type, arg3: type...){
+    this.member1 = arg1;
+    this.member2 = arg2;
+    this.member3 = arg3;
+    ...
+}
+</code></pre>
+        <pre class="line-numbers codeBox"><code class="language-typescript">class Person{
+	private name: string;
+	private age: number;
+	constructor(name:string, age:number){
+		This.name = name;
+		This.age = age;
+	}
+	function greet(){
+		alert("Hello, my name is  " + this.name + ", and I am " + this.age.toString() + " years old.");
+	}
+}
+
+class Employee extends Person{
+	private title: string;
+	private salary: number;
+	constructor(name: string, age: number, title: string, salary: number){
+		super(name, age);
+		This.title = title;
+		This,salary = salary;
+	}
+	function greet(){
+		super.greet();
+		alert("And also I am a " + this.title + " and make $" + this.salary.toString() + " per month");
+	}
+}
+</code></pre>
+        <p>The above example represents one parent class: Person, and one inherited, child class: Employee. The inherited class has access to all, except the private data members of the parent class. A child class is defined in TypeScript by using the keyword <code>extends</code> followed by the name of it's parent class i.e <code>class Child extends Parent</code>. By using the function <code>super()</code> you can access the functions and non-private data members of the parent class as well as its constructor. We can see an example of polymorphism by examining the function <code>greet()</code> in both of the classes. In the child class, the function <code>greet()</code> is overridden and has a different definition than the <code>greet()</code> function in the parent class. This means that the <code>greet()</code> function can have different outputs depending on which class object it’s called from.</p>
+
+        <h2 id="TypeAnnotations">Type Annotations</h2>
+        <p>Type annotations in TypeScript are lightweight ways to record the intended contract of the function or variable. In this case, we intend the greeter function to be called with a single string parameter. We can try changing the call greeter to pass an array instead:</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">function greeter(person: string) {
+    return "Hello, " + person;
+}
+
+var user = [0, 1, 2];
+document.body.innerHTML = greeter(user);</code></pre>
+        <p>Re-compiling, you’ll now see an error:</p>
+        <p><code>greeter.ts(7,26): error TS2345: Argument of type 'number[]' is not assignable to parameter of type 'string'.</code></p>
+        <p>Similarly, try removing all the arguments to the greeter call. TypeScript will let you know that you have called this function with an unexpected number of parameters. In both cases, TypeScript can offer static analysis based on both the structure of your code, and the type annotations you provide</p>
+        <p>Notice that although there were errors, the greeter.js file is still created. You can use TypeScript even if there are errors in your code. But in this case, TypeScript is warning that your code will likely not run as expected.</p>
+        <p>By doing this example we understand that TypeScript is still in essence JavaScript but with added safety. By using types, by forcing the programer to be more explicit we achieve a more strict way of coding, in which the chances of making faults or bugs is reduced. This forces even other programmers which examine or use the code to use it properly because they are forced to follow convention and input appropriate objects in functions that only accept those given types of objects, thus TypeScript is in a sense JavaScript with a debugging safety net. TypeScript in this manner allows for greater safety when working on projects with twenty, thirty or more people, it allows for division of labour amongst the workers in which every person can safely contribute and safely use the work of others. Clearly we see that TypeScript buys in the whole concept of object-orientated programming. But there will be other segments in which we will elaborate more on certain points introduced here. For now let’s develop our sample a little further. Here we use an interface that describes objects that have a firstName and lastName field. In TypeScript, two types are compatible if their internal structure is compatible. This allows us to implement an interface just by having the shape the interface requires, without an explicit implements clause.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+function greeter(person: Person) {
+    return "Hello, " + person.firstName + " " + person.lastName;
+}
+
+var user = { firstName: "Jane", lastName: "User" };
+
+document.body.innerHTML = greeter(user);</code></pre>
+
+        <h2 id="Classes">Classes</h2>
+        <p>Finally, let’s extend the example one last time with classes. TypeScript supports new features in JavaScript, like support for class-based object-oriented programming.</p>
+        <p>Here we’re going to create a <code>Student</code> class with a constructor and a few public fields. Notice that classes and interfaces play well together, letting the programmer decide on the right level of abstraction.</p>
+        <p>Also of note, the use of <code>public</code> on arguments to the constructor is a shorthand that allows us to automatically create properties with that name.</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">class Student {
+    fullName: string;
+    constructor(public firstName, public middleInitial, public lastName) {
+        this.fullName = firstName + " " + middleInitial + " " + lastName;
+    }
+}
+
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+function greeter(person : Person) {
+    return "Hello, " + person.firstName + " " + person.lastName;
+}
+
+var user = new Student("Jane", "M.", "User");
+
+document.body.innerHTML = greeter(user);</code></pre>
+        <p>Re-run <code>tsc greeter.ts</code> and you’ll see the generated JavaScript is the same as the earlier code. Classes in TypeScript are just a shorthand for the same prototype-based OO that is frequently used in JavaScript.</p>
+        <h2 id="WebApp">Running your TypeScript Web App</h2>
+<p>Now type the following in a file <code>greeter.html</code>:</p>
+        <pre class="line-numbers codeBox"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;TypeScript Greeter&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;script src="greeter.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Open <code>greeter.html</code> in the browser to run your first simple TypeScript web application!</p>
+<p>We believe that it’s important to note that in the <code>greeter.html</code> file when we add our script we are actually adding the compiled JavaScript version of our code and not the actual code that we typed in written in TypeScript, additionally we recommend that you add all of your scripts above the ending body tag <code>&lt;/body&gt;</code> the reason being that when the page is being loading in the browser the person viewing the web page actually gets to see the visual part of the web page first, its appearance. While the person viewing actually clicks or uses our page the scripts will have already loaded. </p>
+<h2 id="Libs">Libraries and frameworks that use TypeScript</h2>
+<p>Because of these productivity wins from cleaner ES6 code, autocompletion, and hinting from optional typing, TypeScript is being adopted into major projects, like the dynamic web application framework, which can also be used on mobile, AngularJS 2.0 and the open source framework for building amazing mobile applications, Ionic Framework 2.0, the text editor Visual Studio Code etc..
+    You can also leverage TypeScript in JavaScript projects not written in TypeScript in the first place. TypeScript has definition files that allow you to get these productivity boosts when coding almost in any environment from the Browser to Node.js. You get all the autocompletion and hinting as if they were written in TypeScript.
+</p>
+        <h3 id="Angular">Angular (<a href="https://www.infoq.com/articles/Angular2-TypeScript-High-Level-Overview">source</a>)</h3>
+
+<p>AngularJS is by far the most popular JavaScript framework available today for creating web applications. And now Angular 2 and TypeScript are bringing true object-oriented web development to the mainstream, in a syntax that is strikingly close to Java 8.
+</p>
+<p>This template consists of a mix of standard and custom HTML tags that represent respective components. In the example we in-lined the HTML. If we prefer to store the markup in a separate file (in this case application.html), we’ll would use the property <code>templateURL</code> instead of template, and the code of the <code>ApplicationComponent</code> might look like this:
+</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">import {Component} from 'angular2/core';
+import {Route, RouteConfig, RouterOutlet} from 'angular2/router';
+import HomeComponent from '../home/home';
+import NavbarComponent from '../navbar/navbar';
+import FooterComponent from '../footer/footer';
+import SearchComponent from '../search/search';
+import ProductDetailComponent from "../product-detail/product-detail";
+
+@Component({
+  selector: 'auction-application',
+  templateUrl: 'app/components/application/application.html',
+  directives: [
+    RouterOutlet,
+    NavbarComponent,
+    FooterComponent,
+    SearchComponent,
+    HomeComponent
+  ]
+})
+@RouteConfig([
+  {path: '/', component: HomeComponent, as: 'Home'},
+  {path: '/products/:id', component: ProductDetailComponent, as: 'ProductDetail'}
+])
+export default class ApplicationComponent {}</code></pre>
+<h3 id="VisualStudio">Visual Studio Code (<a href="https://code.visualstudio.com/docs">source</a>)</h3>
+        <p>Visual Studio Code is a lightweight but powerful source code editor written in TypeScript, JavaScript and CSS which runs on the desktop and is available for Windows, MacOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Python, PHP, Go) and runtimes (such as .NET and Unity). Here is an example of the source code written in TypeScript (source code taken from
+            <a href="https://github.com/Microsoft/vscode/blob/master/src/vs/editor/editor.main.ts">here</a>):</p>
+        <pre class="line-numbers codeBox"><code class="language-typescript">'use strict';
+
+import 'vs/editor/browser/editor.all';
+import 'vs/editor/contrib/quickOpen/browser/quickOutline';
+import 'vs/editor/contrib/quickOpen/browser/gotoLine';
+import 'vs/editor/contrib/quickOpen/browser/quickCommand';
+import 'vs/editor/contrib/inspectTokens/browser/inspectTokens';
+
+import { createMonacoBaseAPI } from 'vs/editor/common/standalone/standaloneBase';
+import { createMonacoEditorAPI } from 'vs/editor/browser/standalone/standaloneEditor';
+import { createMonacoLanguagesAPI } from 'vs/editor/browser/standalone/standaloneLanguages';
+import { EDITOR_DEFAULTS, WrappingIndent } from 'vs/editor/common/config/editorOptions';
+
+// Set defaults for standalone editor
+(&lt;any&gt;EDITOR_DEFAULTS).wrappingIndent = WrappingIndent.None;
+(&lt;any&gt;EDITOR_DEFAULTS.contribInfo).folding = false;
+(&lt;any&gt;EDITOR_DEFAULTS.viewInfo).glyphMargin = false;
+
+let base = createMonacoBaseAPI();
+for (let prop in base) {
+	if (base.hasOwnProperty(prop)) {
+		exports[prop] = base[prop];
+	}
+}
+exports.editor = createMonacoEditorAPI();
+exports.languages = createMonacoLanguagesAPI();
+
+var global: any = self;
+global.monaco = exports;
+
+if (typeof global.require !== 'undefined' && typeof global.require.config === 'function') {
+	global.require.config({
+		ignoreDuplicateModules: [
+			'vscode-languageserver-types',
+			'vscode-languageserver-types/main',
+		]
+	});
+}</code></pre>
+    </div>
+</div>
