@@ -1,0 +1,49 @@
+Why use TypeScript?
+    Optional Typing
+Why use Types?
+    What does static typing offer?
+    TypeScript Makes Code Easier to Read and Understand
+    A few words and examples regarding the typing
+    When to use TypeScript
+Installation Process
+    Making you first TypeScript file
+    Additional notes on transpiling, joining files and watcher.
+Basic Types in TypeScript
+    Boolean
+    Number
+    String
+    Array
+    Tuple
+    Enum
+    Any
+    Void
+    Null and Undefined
+    Never
+    Type Assertions
+Keywords and Features in TypeScript
+    let
+        Functions create a new scope
+        The Generated JS
+        let in Closures
+    const
+        Block Scoped
+        Deep immutability
+    for...of
+        JS Generation
+        Limitations
+    Multi-line Strings
+    Arrow Functions
+        A few helpful Tips
+        Tip: Arrow Function Need
+        Tip: Arrow Function Danger
+        Tip: Arrow functions with libraries that use this
+        Tip: Arrow functions and inheritance
+    Code in JavaScript vs code in TypeScript
+Object-oriented Programming in TypeScript
+    Type annotations
+    Classes
+    Running your TypeScript web app
+    Libraries and frameworks that use TypeScript
+        Angular
+        Visual Studio Code
+Our own implementation of TypeScript

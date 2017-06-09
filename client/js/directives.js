@@ -60,3 +60,10 @@ app.directive('keywords', function() {
         templateUrl: 'client/html/keywords.html'
     };
 });
+
+app.directive('our', function() {
+    return {
+        restrict: "E",
+        templateUrl: 'client/html/our.html'
+    };
+});

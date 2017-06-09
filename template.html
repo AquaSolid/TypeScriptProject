@@ -2,15 +2,15 @@
     <prism></prism>
     <div class="container">
         <h1>Why use TypeScript?</h1><a href="https://vsavkin.com/writing-angular-2-in-typescript-1fa77c78d8e8">source</a>
-        <p>TypeScript is ECMAScript 6 (ES6) with optional typing.<br>
-            ECMAScript is the standardized specification for the JavaScript language. It’s sometimes<br> referred as ECMAScript Harmony or ES.next. At the time of this writing, JavaScript is currently <br>at ECMAScript 8, which is not yet finished (source). Since ES6 is backwardly compatible with<br> the ES5 syntax, you can start writing TypeScript without changing any of your existing code.<br> The good thing is that learning TypeScript doesn’t require that the programer learn a whole new<br> syntax, as one may would using CoffeeScript for example.
+        <p>TypeScript is ECMAScript 6 (ES6) with optional typing.
+            ECMAScript is the standardized specification for the JavaScript language. It’s sometimes referred as ECMAScript Harmony or ES.next. At the time of this writing, JavaScript is currently at ECMAScript 8, which is not yet finished (source). Since ES6 is backwardly compatible with the ES5 syntax, you can start writing TypeScript without changing any of your existing code. The good thing is that learning TypeScript doesn’t require that the programer learn a whole new syntax, as one may would using CoffeeScript for example.
         </p>
         <h2>Typescript Has Great Tools</h2>
-        <p>The biggest selling point of TypeScript is tooling. It provides advanced autocompletion,<br> navigation, and refactoring. Having such tools is almost a requirement for large projects.<br> Without them the fear changing the code puts the code base in a semi-read-only state, and<br> makes large-scale refactorings very risky and costly. TypeScript is not the only typed language that compiles to JavaScript. There are other<br> languages with stronger type systems that in theory can provide absolutely phenomenal tooling.<br> But in practice most of them do not have anything other than a compiler. This is because<br> building rich developer tools has to be an explicit goal from day one, which it has been for the <br>TypeScript team. That is why they built language services that can be used by editors to provide type checking<br> and autocompletion. If you have wondered why there are so many editors with<br> great TypeScript supports, the answer is the language services.</p>
-        The fact that intellisense and basic refactorings (e.g., rename a symbol) are reliable makes a<br> huge impact on the process of writing and especially refactoring code.<br>
+        <p>The biggest selling point of TypeScript is tooling. It provides advanced autocompletion, navigation, and refactoring. Having such tools is almost a requirement for large projects. Without them the fear changing the code puts the code base in a semi-read-only state, and makes large-scale refactorings very risky and costly. TypeScript is not the only typed language that compiles to JavaScript. There are other languages with stronger type systems that in theory can provide absolutely phenomenal tooling. But in practice most of them do not have anything other than a compiler. This is because building rich developer tools has to be an explicit goal from day one, which it has been for the TypeScript team. That is why they built language services that can be used by editors to provide type checking and autocompletion. If you have wondered why there are so many editors with great TypeScript supports, the answer is the language services.</p>
+        The fact that intellisense and basic refactorings (e.g., rename a symbol) are reliable makes a huge impact on the process of writing and especially refactoring code.
          <h2>TypeScript Makes Abstractions Explicit</h2>
-        <p>A good design is all about well-defined interfaces. And it is much easier to express the idea of<br> an interface in a language that supports them.
-            As you can see, both classes play the role of a purchaser. Despite being extremely important for<br> the application, the notion of a purchaser is not clearly expressed in the code. There is no file<br> named purchaser.js. And as a result, it is possible for someone modifying the code to miss the<br> fact that this role even exists.</p>
+        <p>A good design is all about well-defined interfaces. And it is much easier to express the idea of an interface in a language that supports them.
+            As you can see, both classes play the role of a purchaser. Despite being extremely important for the application, the notion of a purchaser is not clearly expressed in the code. There is no file named purchaser.js. And as a result, it is possible for someone modifying the code to miss the fact that this role even exists.</p>
 function processPurchase(purchaser, details){ }
 
 class User { }
@@ -18,7 +18,7 @@ class User { }
 class ExternalSystem { }
 
 </code></pre>
-        <p>It is hard, just by looking at the code to tell what objects can play the role of a purchaser,<br> and what methods this role has. We do not know for sure, and we will not get much help from our<br> tools. We have to infer this information manually, which is slow and error-prone.<br>
+        <p>It is hard, just by looking at the code to tell what objects can play the role of a purchaser, and what methods this role has. We do not know for sure, and we will not get much help from our tools. We have to infer this information manually, which is slow and error-prone.
             Now, compare it with a version where we explicitly define the <code>Purchaser</code> interface.
         </p>
         <pre class="line-numbers codeBox"><code class="language-typescript">
@@ -29,36 +29,36 @@ class User implements Purchaser {}
 class ExternalSystem implements Purchaser {}
 
 </code></pre>
-        <p>The typed version clearly states that we have the Purchaser interface, and the User and<br> ExternalSystem classes implement it. So TypeScript interfaces allow us to define<br> abstractions/protocols/roles.<br>
-            It is important to realize that TypeScript does not force us to introduce extra abstractions. The<br> Purchaser abstraction is present in the JavaScript version of the code, but it is not explicitly<br> defined.<br>
-            In a statically-typed language, boundaries between subsystems are defined using interfaces.<br> Since JavaScript lacks interfaces, boundaries are not well expressed in plain JavaScript. Not<br> being able to clearly see the boundaries, developers start depending on concrete types instead<br> of abstract interfaces, which leads to tight coupling.<br>
-            My experience of working on Angular before and after our transition to TypeScript reinforced this<br> belief. Defining an interface forces me to think about the API boundaries, helps me define the<br> public interfaces of subsystems, and exposes incidental coupling.<br>
+        <p>The typed version clearly states that we have the Purchaser interface, and the User and ExternalSystem classes implement it. So TypeScript interfaces allow us to define abstractions/protocols/roles.
+            It is important to realize that TypeScript does not force us to introduce extra abstractions. The Purchaser abstraction is present in the JavaScript version of the code, but it is not explicitly defined.
+            In a statically-typed language, boundaries between subsystems are defined using interfaces. Since JavaScript lacks interfaces, boundaries are not well expressed in plain JavaScript. Not being able to clearly see the boundaries, developers start depending on concrete types instead of abstract interfaces, which leads to tight coupling.
+            My experience of working on Angular before and after our transition to TypeScript reinforced this belief. Defining an interface forces me to think about the API boundaries, helps me define the public interfaces of subsystems, and exposes incidental coupling.
         </p>
         <h2>Optional Typing</h2>
-        <p>Where TypeScript comes into its own is in its optional typing. A typed language like Java, C# or<br> Objective-C requires you to specify the type of the variable when declaring it.<br>
-            Declaring a string in Java would look like: <code>String name = "Andrew";</code>, in C# <code>string name =<br> "Andrew"</code>; and in Objective-C it’s <code>NSString name = "Andrew"</code></code>.<br>
-            In TypeScript it would be: <code>var name: string = "Andrew"</code>. But with it being optional, it can be just<br> plain <code>var name = "Andrew"</code>. In strictly typed languages you have to declare everything all the<br> time, with TypeScript you don’t!<br>
-            Having types in your script allows text editors and IDEs to give you intelligent hints quickly<br> without having to run your code.<br>
-            It also helps with autocompletion of your code too. Other text editors autocomplete based on the<br> text written in your project files, it doesn’t know anything about the type of each variable so you<br> may end up passing a similarly named variable into a method call but it’s the wrong type of<br> object. However with TypeScript, code editors can have a more intelligent approach and<br> suggest more appropriate variables to pass into a function call. It’s a real productivity boost. It’s<br> almost as if the code is writing itself.<br>
-            It also reduces the need to look up documentation so frequently since the code is annotated<br> with the types needed for a method call or what will be returned from a method call.<br>
+        <p>Where TypeScript comes into its own is in its optional typing. A typed language like Java, C# or Objective-C requires you to specify the type of the variable when declaring it.
+            Declaring a string in Java would look like: <code>String name = "Andrew";</code>, in C# <code>string name = "Andrew"</code>; and in Objective-C it’s <code>NSString name = "Andrew"</code></code>.
+            In TypeScript it would be: <code>var name: string = "Andrew"</code>. But with it being optional, it can be just plain <code>var name = "Andrew"</code>. In strictly typed languages you have to declare everything all the time, with TypeScript you don’t!
+            Having types in your script allows text editors and IDEs to give you intelligent hints quickly without having to run your code.
+            It also helps with autocompletion of your code too. Other text editors autocomplete based on the text written in your project files, it doesn’t know anything about the type of each variable so you may end up passing a similarly named variable into a method call but it’s the wrong type of object. However with TypeScript, code editors can have a more intelligent approach and suggest more appropriate variables to pass into a function call. It’s a real productivity boost. It’s almost as if the code is writing itself.
+            It also reduces the need to look up documentation so frequently since the code is annotated with the types needed for a method call or what will be returned from a method call.
         </p>
         <h1>Why use Types?</h1>
-        <p>The term dynamic typing refers to the practise where a programmer needn’t declare the type of<br> a variable when programing his code, because the variable will dynamically be assigned a type<br> when needed. This is the practise that JavaScript follows as well as popular languages such as<br> PHP and Ruby. On the other hand we have static typing, which is found in all major and famous<br> languages such as a Java, C++/C, C# etc. It is when the programmer is forced into declaring<br> the type for each variable.<br>
+        <p>The term dynamic typing refers to the practise where a programmer needn’t declare the type of a variable when programing his code, because the variable will dynamically be assigned a type when needed. This is the practise that JavaScript follows as well as popular languages such as PHP and Ruby. On the other hand we have static typing, which is found in all major and famous languages such as a Java, C++/C, C# etc. It is when the programmer is forced into declaring the type for each variable.
         </p>
         <h2>What does static typing offer?</h2>
-        <p>Static typing most of the time leads the programmer to think along the lines of software<br> structure, meaning he needs to understand what variable and more specifically what kind of<br> variable can use a certain function and which cannot. Because of this reason TypeScript has<br> been adopted and used in major programing projects as mentioned. Some projects have<br> completely been rewritten into TypeScript because TypeScript conveys the object-oriented<br> programing concept much more clearly than using certain hacks or workarounds when typing plain old JavaScript. Of course, TypeScript also uses those same workarounds and hacks when<br> transpiling the code to JavaScript but the main thing is that while the program is being created<br> the programmer needs only to think about solving the problem and less about how to<br> encapsulate or compose information. Of course the static typing in TypeScript is optional, but of<br> course most programmers will use it since they they want their abstractions to be explicit.<br>
+        <p>Static typing most of the time leads the programmer to think along the lines of software structure, meaning he needs to understand what variable and more specifically what kind of variable can use a certain function and which cannot. Because of this reason TypeScript has been adopted and used in major programing projects as mentioned. Some projects have completely been rewritten into TypeScript because TypeScript conveys the object-oriented programing concept much more clearly than using certain hacks or workarounds when typing plain old JavaScript. Of course, TypeScript also uses those same workarounds and hacks when transpiling the code to JavaScript but the main thing is that while the program is being created the programmer needs only to think about solving the problem and less about how to encapsulate or compose information. Of course the static typing in TypeScript is optional, but of course most programmers will use it since they they want their abstractions to be explicit.
         </p>
         <h2>TypeScript Makes Code Easier to Read and Understand</h2>
-        <p>Let’s start off with an example using the function jQuery.ajax() from the JavaScript library<br> jQuery. What kind of information can we get from its signature?<br>
+        <p>Let’s start off with an example using the function jQuery.ajax() from the JavaScript library jQuery. What kind of information can we get from its signature?
         </p>
         <pre class="line-numbers codeBox"><code class="language-typescript">
 code**jQuery.ajax(url, settings)
 
 </code></pre>
-        <p>The only thing we can tell for sure is that the function takes two arguments. We can guess the<br> types. Maybe the first one is a string and the second one is a configuration object. But it is just a<br> guess, and we might be wrong. We have no idea what options go into the settings object<br> (neither their names nor their types), or what this function returns.<br>
-            There is no way we can call this function without checking the source code or the<br> documentation. Checking the source code is not a good option — the point of having functions<br> and classes is to be able to use them without knowing how they are implemented. In other<br> words, we should rely on their interfaces, not on their implementation. We can check the<br> documentation, but it is not the best developer experience — it takes additional time, and the<br> docs are often out-of-date.<br>
-            So although it is easy to read <code>jQuery.ajax(url, settings)</code>, to really understand how to call this<br> function we need to either read its implementation or its docs.<br>
-            Now, contrast it with a typed version.<br>
+        <p>The only thing we can tell for sure is that the function takes two arguments. We can guess the types. Maybe the first one is a string and the second one is a configuration object. But it is just a guess, and we might be wrong. We have no idea what options go into the settings object (neither their names nor their types), or what this function returns.
+            There is no way we can call this function without checking the source code or the documentation. Checking the source code is not a good option — the point of having functions and classes is to be able to use them without knowing how they are implemented. In other words, we should rely on their interfaces, not on their implementation. We can check the documentation, but it is not the best developer experience — it takes additional time, and the docs are often out-of-date.
+            So although it is easy to read <code>jQuery.ajax(url, settings)</code>, to really understand how to call this function we need to either read its implementation or its docs.
+            Now, contrast it with a typed version.
         </p>
         <pre class="line-numbers codeBox"><code class="language-typescript">
 
@@ -77,15 +77,15 @@ interface JQueryXHR {
 }
 
 </code></pre>
-        <p>It gives us a lot more information.<br>
-            1. The first argument of this function is a string.<br>
-            2. The settings argument is optional. We can see all the options that can be passed into<br> the function, and not only their names, but also their types. Note: the question mark<br> operator specifies that the given field is optional, e.g. async?: boolean; meaning this field<br> isn’t specifically required.<br>
-            3. The function returns a JQueryXHR object, and we can see its properties and functions.<br>
-            The typed signature is certainly longer than the untyped one, but <code>:string</code>, <code>:JQueryAjaxSettings</code><br>, and <code>JQueryXHR</code> are not clutter. They are important documentation that improves the<br> comprehensibility of the code. We can understand the code to a much greater degree without<br> having to dive into the implementation or reading the docs.<br>
-            One thing that is different about TypeScript comparing to many other languages compiled to<br> JavaScript is that its type annotations are optional, and jQuery.ajax(url, settings) is still valid in<br> TypeScript. So instead of an on-off switch, TypeScript’s types are more of a dial. If you find that<br> the code is trivial to read and understand without type annotations, do not use them. Use types<br> only when they add value.<br>
+        <p>It gives us a lot more information.
+            1. The first argument of this function is a string.
+            2. The settings argument is optional. We can see all the options that can be passed into the function, and not only their names, but also their types. Note: the question mark operator specifies that the given field is optional, e.g. async?: boolean; meaning this field isn’t specifically required.
+            3. The function returns a JQueryXHR object, and we can see its properties and functions.
+            The typed signature is certainly longer than the untyped one, but <code>:string</code>, <code>:JQueryAjaxSettings</code>, and <code>JQueryXHR</code> are not clutter. They are important documentation that improves the comprehensibility of the code. We can understand the code to a much greater degree without having to dive into the implementation or reading the docs.
+            One thing that is different about TypeScript comparing to many other languages compiled to JavaScript is that its type annotations are optional, and jQuery.ajax(url, settings) is still valid in TypeScript. So instead of an on-off switch, TypeScript’s types are more of a dial. If you find that the code is trivial to read and understand without type annotations, do not use them. Use types only when they add value.
         </p>
         <h2>A few words and examples regarding the typing</h2>
-        <p>Dynamically-typed languages have inferior tooling, but they are more malleable and expressive.<br> We think using TypeScript makes your code more rigid, but to a much lesser degree<br> than people think. For example:</p>
+        <p>Dynamically-typed languages have inferior tooling, but they are more malleable and expressive. We think using TypeScript makes your code more rigid, but to a much lesser degree than people think. For example:</p>
         <pre class="line-numbers codeBox"><code class="language-typescript">
 
 const PersonRecord = Record({name:null, age:null});
@@ -108,7 +108,7 @@ function createPerson(name: string, age: number): Person {
 }
 
 </code></pre>
-        <p>the TypeScript compiler will complain. It does not know that <code>PersonRecord</code> is actually<br> compatible with <code>Person</code> because <code>PersonRecord</code> is created reflectively. TypeScript’s type system<br> is not the most advanced one. But its goal is different. It is not here to prove that the program is<br> 100% correct. It is about giving you more information and enable greater tooling. So it is alright<br> to take shortcuts when the type system is not flexible enough. So we can just cast the created<br> record, as follows:</p>
+        <p>the TypeScript compiler will complain. It does not know that <code>PersonRecord</code> is actually compatible with <code>Person</code> because <code>PersonRecord</code> is created reflectively. TypeScript’s type system is not the most advanced one. But its goal is different. It is not here to prove that the program is 100% correct. It is about giving you more information and enable greater tooling. So it is alright to take shortcuts when the type system is not flexible enough. So we can just cast the created record, as follows:</p>
         <pre class="line-numbers codeBox"><code class="language-typescript">
 
 function createPerson(name: string, age: number): Person {
@@ -131,13 +131,13 @@ const p = createPerson("Jim", 44);
 expect(p.name).toEqual("Jim");
 
 </code></pre>
-        <p>The reason why it works is because the type system is structural. As long as the created object<br> has the right fields, name and age, we are good.<br>
-            You need to embrace the mindset that it is alright to take shortcuts when working with<br> TypeScript. Only then you will find using the language enjoyable. For instance, don’t try to add<br> types to some funky metaprogramming code  most likely you won’t be able to express it<br> statically. Type everything around that code, and tell the typechecker to ignore the funky bit. In<br> this case you will not lose a lot of expressiveness, and the bulk of your code will remain toolable<br> and analyzable.<br>
-            The optional type system preserves the JavaScript development workflow. Large parts of your<br> application’s code base can be “broken”, but you can still run it. TypeScript will keep generating<br> JavaScript, even when the type checker complains. This is extremely useful during<br> development.
+        <p>The reason why it works is because the type system is structural. As long as the created object has the right fields, name and age, we are good.
+            You need to embrace the mindset that it is alright to take shortcuts when working with TypeScript. Only then you will find using the language enjoyable. For instance, don’t try to add types to some funky metaprogramming code  most likely you won’t be able to express it statically. Type everything around that code, and tell the typechecker to ignore the funky bit. In this case you will not lose a lot of expressiveness, and the bulk of your code will remain toolable and analyzable.
+            The optional type system preserves the JavaScript development workflow. Large parts of your application’s code base can be “broken”, but you can still run it. TypeScript will keep generating JavaScript, even when the type checker complains. This is extremely useful during development.
         </p>
         <h2>When to use TypeScript</h2>
-        <p>We believe that TypeScript should be used on projects which benefit from its use as that is the<br> most rational choice. That would refer to projects that would be much better off with structure in<br> the object-oriented sense. For smaller projects which use small scripts only to change a few css<br> properties of HTML elements TypeScript is unneeded and even too verbose for small tasks<br> such as that. Of course writing plain old JavaScript in a TypeScript file is completely alright and<br> one can do that, but in essence TypeScript’s utilities are never really used. But they are used<br> when we have some hierarchy of classes, dependencies between information et cetera and<br> TypeScript is the perfect candidate to sort out and structure such things.<br>
-            In conclusion, we believe that small projects which use shorts scripts which do not require<br> structure, do not require types as well and therefore would not have the specific benefit of being<br> written in TypeScript which is the opposite for bigger projects with plenty lines of code which<br> would greatly benefit by having structure and thus would benefit from having their programmers<br> write TypeScript code instead of plain old JavaScript code.
+        <p>We believe that TypeScript should be used on projects which benefit from its use as that is the most rational choice. That would refer to projects that would be much better off with structure in the object-oriented sense. For smaller projects which use small scripts only to change a few css properties of HTML elements TypeScript is unneeded and even too verbose for small tasks such as that. Of course writing plain old JavaScript in a TypeScript file is completely alright and one can do that, but in essence TypeScript’s utilities are never really used. But they are used when we have some hierarchy of classes, dependencies between information et cetera and TypeScript is the perfect candidate to sort out and structure such things.
+            In conclusion, we believe that small projects which use shorts scripts which do not require structure, do not require types as well and therefore would not have the specific benefit of being written in TypeScript which is the opposite for bigger projects with plenty lines of code which would greatly benefit by having structure and thus would benefit from having their programmers write TypeScript code instead of plain old JavaScript code.
         </p>
         <!--
         <h1></h1>

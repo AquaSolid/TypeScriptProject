@@ -248,3 +248,56 @@ ol > a:visited {
 .navbar-inverse .navbar-nav > li > a:hover {
     background-color: var(--highlight-color);
 }
+
+/*Jef Example*/
+.bgBlue {
+    background-color: cyan;
+}
+
+.bgRed {
+    background-color: red;
+}
+
+.centeredElement {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border: 2px;
+    border-style: dotted;
+}
+
+.banner {
+    padding: 25px;
+    margin-bottom: 5px;
+    background-color: black;
+    color: white;
+}
+
+.jefBox {
+    height: 270px;
+}
+
+
+/*Practical Example*/
+.foo {
+    float: left;
+    width: 20px;
+    height: 80px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.blue {
+    background: #13b4ff;
+}
+
+.purple {
+    background: #ab3fdd;
+}
+
+.wine {
+    background: #ae163e;
+}
+
+.center{
+    margin: 0 auto;
+    width: 100%;
+}

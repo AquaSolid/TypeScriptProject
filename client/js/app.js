@@ -21,5 +21,8 @@ app.config(function($routeProvider) {
         .when("/keywords", {
             templateUrl: "client/html/keywords.html"
         })
+        .when("/our", {
+            templateUrl: "client/html/our.html"
+        })
         .otherwise({ redirectTo: '/' });
 });

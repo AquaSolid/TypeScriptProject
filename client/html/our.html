@@ -1,0 +1,182 @@
+<script src="../ts/jef.js"></script>
+<div ng-controller="MainController as main">
+    <prism></prism>
+    <div class="container">
+        <h1>Our own Implementation of TypeScript</h1>
+        <h2>Example 1</h2>
+        <h3>Click the green button</h3>
+        <script src="client/ts/jef.js"></script>
+        <div class="row">
+            <!-- MeNemJef -->
+            <div id="btn-bg" class="col-md-4 bgBlue centeredElement jefBox">
+                <div class="blockCenter">
+                <button onclick="button()" id="button" class="btn btn-default center-block">Click Me!</button>
+                <br>
+                <div id="textBox" class="block text-center">..me nem.</div>
+                </div>
+            </div>
+            <div class="col-md-4 banner text-center jefBox">
+                <p id="banner" class="blockCenter text-center">Hello!</p>
+            </div>
+            <!-- Form Example -->
+            <div class="col-md-4 text-center jefBox">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="age" class="form-control" id="age">
+                </div>
+                <div class="form-group">
+                    <label>Sex:</label> Male <input id="sexMale" type="radio" name="sex"> Female <input id="sexFemale" type="radio" name="sex">
+                </div>
+                <input onclick="Submit()" class="btn btn-success btn-block" type="submit" value="Submit">
+                <label for="outputBox">Output: </label>
+                <div id="outputBox" class="block text-center">..me nem.</div>
+            </div>
+        </div>
+        <h3>How does it work?</h3>
+        <p>First, for the black box containing the date, if you examine the <code>jef.html</code> file you can see that it contains only a <code>&lt;p&gt;</code> which holds only the word "Hello!" which means that by using the top three lines in <code>jef.ts</code> we have managed to changed "Hello!" to the current date.</p>
+        <p>Secondly, for the cyan box containing the button "Click me!". This example is similar to the first but it differs in that it allows for the user to control when he wants the text to change, and upon a second click it does, before that only the background changes from cyan to pink. If you examine the <code>jef.ts</code> file you can notice a function called <code>chagneBg()</code> which allows for this feature and another function named <code>changeText()</code> which allows for the change of text.</p>
+        <p>Lastly, the form contains three input fields, one for the name, age and sex of the user. Upon completion of the form's input fields and pressing the green button the text under the <code><b>Output</b>:</code> label is changed to what the user has entered. What happens is that within the <code>jef.ts</code> file, more precisely in the <code>class Person</code> an object is created holding the appropriate information depending on the user's input. Afterwards similarly to the previous two example but with an added twist of using a in-class function <code>public print()</code> which returns a <code>string</code> we are able to see our output (which is of course, dependant on our input).</p>
+        <h4><code>jef.html</code></h4>
+        <pre class="line-numbers codeBox"><code class="language-html">&lt;div class="row"&gt;
+    &lt;!-- MeNemJef Example --&gt;
+    &lt;div id="btn-bg" class="col-md-4 bgBlue centeredElement jefBox"&gt;
+        &lt;div class="blockCenter"&gt;
+        &lt;button onclick="button()" id="button" class="btn btn-default center-block"&gt;Click Me!&lt;/button&gt;
+        &lt;br&gt;
+        &lt;div id="textBox" class="block text-center"&gt;..me nem.&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Banner Example --&gt;
+    &lt;div class="col-md-4 banner text-center jefBox"&gt;
+        &lt;p id="banner" class="blockCenter text-center"&gt;Hello!&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!-- Form Example --&gt;
+    &lt;div class="col-md-4 text-center jefBox"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="name"&gt;Name:&lt;/label&gt;
+            &lt;input type="text" class="form-control" id="name"&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="age"&gt;Age:&lt;/label&gt;
+            &lt;input type="age" class="form-control" id="age"&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label&gt;Sex:&lt;/label&gt; Male &lt;input id="sexMale" type="radio" name="sex"&gt; Female &lt;input id="sexFemale" type="radio" name="sex"&gt;
+        &lt;/div&gt;
+        &lt;input onclick="Submit()" class="btn btn-success btn-block" type="submit" value="Submit"&gt;
+        &lt;label for="outputBox"&gt;Output: &lt;/label&gt;
+        &lt;div id="outputBox" class="block text-center"&gt;..I am.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4><code>jef.ts</code></h4>
+        <pre class="line-numbers codeBox"><code class="language-typescript">let banner: HTMLElement;
+banner = document.getElementById("banner");
+banner.innerText = Date();
+
+let i: number = 0;
+
+function button() {
+    if (i % 2 == 0) {
+        changeBg();
+        i++;
+    } else {
+        changeText();
+        i++;
+    }
+}
+let btn_bg = document.getElementById("btn-bg");
+
+function changeBg() {
+    btn_bg.style.backgroundColor = "pink";
+}
+
+let textBox: HTMLElement = document.getElementById("textBox");
+
+function changeText() {
+    let text: string = textBox.innerText;
+    textBox.innerText = text + ".jef.";
+}
+
+class Person {
+    private name: string;
+    private age: number;
+    private sex: boolean;
+
+    constructor(name: string, age: number, sex: boolean) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    public print() {
+        let gender: string;
+        if (this.sex == true) {
+            gender = "Male";
+        } else {
+            gender = "Female";
+        }
+        return this.name + " " + this.age.toString() + " " + gender;
+    }
+
+}
+let outputBox: HTMLElement = document.getElementById("outputBox");
+let person: any = new Person("Jim", 16, true);
+outputBox.innerText = person.print();
+
+function Submit() {
+    let Name: string = (&lt;HTMLInputElement&gt;document.getElementById("name")).value;
+    let Age: string = (&lt;HTMLInputElement&gt;document.getElementById("age")).value;
+    let Sex: boolean = (&lt;HTMLInputElement&gt;document.getElementById("sexMale")).checked;
+
+    let inPerson: any = new Person(Name, +Age, Sex);
+    outputBox.innerText = inPerson.print();
+}</code></pre>
+        <!-- Practical -->
+        <h2>Example 2</h2>
+        <h3>Click the green button</h3>
+        <div id="line1" class="foo blue center"></div>
+        <div id="line2" class="foo purple center"></div>
+        <div id="line3" class="foo wine center"></div>
+        <hr>
+        <button class="btn btn-block btn-success" onclick="change_color()">Change color</button>
+        <script src="client/ts/flag.js"></script>
+        <h3>How does it work?</h3>
+        <h4><code>flag.html</code></h4>
+        <p>Notice that in the <code>src</code> attribute in the <code>&lt;script&gt;</code> tag we are adding a <code>.js</code> file called <code>flag.js</code> which is transpiled from the TypeScript filed called <code>flag.ts</code></p>
+        <pre class="line-numbers codeBox"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;TypeScript Example&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="flag.css" /&gt;
+    &lt;script type="text/javascript" src="flag.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id="line1" class="foo blue center"&gt;&lt;/div&gt;
+    &lt;div id="line2" class="foo purple center"&gt;&lt;/div&gt;
+    &lt;div id="line3" class="foo wine center"&gt;&lt;/div&gt;
+    &lt;hr&gt;
+    &lt;button class="btn" onclick="change_color()"&gt;Change color&lt;/button&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        <h4><code>flag.ts</code></h4>
+        <pre class="line-numbers codeBox"><code class="language-typescript">function change_color() {
+    let lines:any = document.getElementsByClassName("foo");
+    let attributes: Array<string> =
+    ["background: red;", "background: white;", "background: blue;"];
+    console.log(lines);
+    for (let i:number = 0; i < lines.length; i++) {
+        console.log(i);
+        console.log(lines[i]);
+        lines[i].setAttribute("style", attributes[i]);
+    }
+}</code></pre>
+    </div>
+</div>
