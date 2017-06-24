@@ -12,33 +12,32 @@
     <title>
         TypeScript
     </title>
-    <!--When working locally comment out the base tag-->
-    <!--<base href="https://blagojamarkoski.ml/">-->
+    
+    <!--All CDN files have been downloaded and made local-->
 
     <!-- CDN CSS Files -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="client/css/lib/bootstrap.min.css">
     <!-- Local CSS Files -->
     <link rel="stylesheet" type="text/css" href="client/css/main.css"/>
 </head>
-<!--Useful Links
-https://codepen.io/halleycarleton/pen/zGaGRv?editors=1100
--->
+
 <body ng-app="myApp">
 <navbar></navbar>
 <div class="page-wrap" ng-view></div>
 <foobar></foobar>
 
 <!-- CDN JavaScript Files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="client/js/lib/jquery.min.js"></script>
+<script src="client/js/lib/bootstrap.min.js"></script>
 <!-- AngularJS Files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-route.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.2/angular-sanitize.min.js"></script>
+<script src="client/js/lib/angular.min.js"></script>
+<script src="client/js/lib/angular-route.min.js"></script>
+<script src="client/js/lib/angular-sanitize.min.js"></script>
 <!-- Local JavaScript Files -->
 <script src="client/js/app.js" type="text/javascript"></script>
 <script src="client/js/main.js" type="text/javascript"></script>
-<script src="client/js/directives.js"  type="text/javascript"></script>
+<script src="client/js/directives.js" type="text/javascript"></script>
+
 </body>
 
 </html>
